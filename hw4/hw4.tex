@@ -1,0 +1,90 @@
+\documentclass{ctexart}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+
+\title{曼德博集合的生成和探索}
+
+\author{洪晨瀚 \\ 信息与计算科学 3200300133}
+
+\begin{document}
+
+\maketitle
+\bibliographystyle{plain}
+\graphicspath{{image/}}
+
+
+\section{摘要}
+  曼德博集合是一种在复平面上组成的点的集合，曼德博集合无论放的多大都有不同的细节在内，本文通过绘制曼德博集合的图片来观察其轨迹以及规律。
+
+\section{引言}
+曼德博集合是一种在复平面上组成分形的点的集合，以数学家本华曼德博的名字命名。将曼德博集合无限放大都能够有精妙的细节在内，而这瑰丽的图案仅仅由一个简单的公式生成。因此有人认为曼德博集合是``人类有史以来做出的最奇异、最瑰丽的几何图形''，曾被称为``上帝的指纹''。 \cite{branner1989mandelbrot}
+
+\section{问题背景}
+曼德博集合是由迭代产生，而迭代是不断重复的过程。在数学上，该过程往往是指计算某个数学函数。就博德曼集合而言，被迭代的是二次多项式$f(x)=x^2+c$,其中c为常量。通过迭代该函数而产生的轨迹，具有极大的研究意义，对迭代理论的研究影响深远。 \cite{shishikura1998hausdorff}
+
+\section{数学理论}
+\subsection{定义}
+\begin{flushleft}
+  迭代函数 ： $f(x)=x^2+c$,其中$c$为常量\\
+  从$z=z_0$开始迭代 ：  \\
+  $x_1=x_0+c$ ,$x_0$是初值 \\
+  $x_2=x_1+c$ \\
+  $\vdots$ \\
+  $x_{n-1}=x_{n-2}+c$ \\
+  $x_n=x_{n-1}+c$
+\end{flushleft}
+
+\subsection{定理}
+\begin{flushleft}
+  定理一：若 $|c| \leq \frac{1}{4}$，则$c \in M$。 \\
+  定理二：若 $c \in M$，则$|c| \leq 2$。 \\
+  定理三：若 $c \in M$，则$|z_{n}| \leq 2$。 
+\end{flushleft}
+
+\section{算法}
+\begin{verbatim}
+  for each c in complex ,z=0,count=0
+  do z=z^2+c,count+=1
+  loop until abs(z)>2 || count>maxcount
+  if count>maxcount ,draw c,black
+  else draw c,white
+\end{verbatim}
+
+\section{数值算例}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=6cm]{00}
+    \caption{Iteration 100}
+  \end{minipage}
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=6cm]{100}
+    \caption{Iteration 100 enlarge}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=6cm]{01}
+    \caption{Iteration 1000}
+  \end{minipage}
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=6cm]{1000}
+    \caption{Iteration 1000 enlarge}
+  \end{minipage}
+\end{figure}
+
+
+\section{结论}
+曼德博集合关于$x$轴对称，与$x$轴的交集位于区间$-2$到$\frac{1}{4}$之内。$x$轴上的原点位于主心形内，$-1$点位于主心形左侧的球形内。曼德博集合由所有满足一定条件的复数$c$组成的迭代产生的轨迹不趋于无穷大。
+
+\bibliography{han}
+\end{document}
+
